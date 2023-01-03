@@ -34,6 +34,7 @@ header{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 }
 
 .mainContainer{
@@ -46,7 +47,7 @@ header{
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
-form{
+#form{
     display: flex;
     gap: 10px;
     align-items: center;
@@ -58,6 +59,7 @@ input{
     padding: 0px 10px;
     border-radius: 10px;
     font-size: 20px;
+    box-shadow: rgb(0 0 0 / 20%) 0 3px 5px -1px, rgb(0 0 0 / 14%) 0 6px 10px 0, rgb(0 0 0 / 12%) 0 1px 18px 0;
 }
 
 button{
@@ -67,7 +69,7 @@ button{
     font-size: 20px;
     height: 45px;
     padding: 5px 10px;
-    transition: .9ms;
+    box-shadow: rgb(0 0 0 / 20%) 0 3px 5px -1px, rgb(0 0 0 / 14%) 0 6px 10px 0, rgb(0 0 0 / 12%) 0 1px 18px 0;
 }
 
 button:hover{
