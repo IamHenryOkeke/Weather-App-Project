@@ -6,15 +6,20 @@ async function getWeatherData() {
         ? (cityName = "Lagos")
         : (cityName = document.querySelector("input").value);
     console.log(cityName);
-    let apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=74e5cd0c54200e60787922b9af13646d`
+    const apiURL = `https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=74e5cd0c54200e60787922b9af13646d`
+    const errorMessage = document.querySelector("span.error");
     try {
         const response = await fetch(apiURL, { mode: "cors" });
         const weatherData = await response.json();
+        errorMessage.textContent = "";
         console.log(weatherData);
         console.log(getNeededData(weatherData));
         populate(getNeededData(weatherData));
 
     } catch (err) {
+        const response = await fetch(apiURL, { mode: "cors" });
+        const weatherData = await response.json();
+        errorMessage.textContent = weatherData.message;
         console.log("Error!!!!!!!!!!!!!!");
     }
 }
