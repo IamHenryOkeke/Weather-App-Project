@@ -1,32 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Weather App</title>
-    <link rel="stylesheet" href="./styles/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"></head>
-<body>
+    <link rel="stylesheet" href="./styles/style.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+  </head>
+  <body>
     <header>
-        <i class="fa fa-cloud" style="font-size:80px;" aria-hidden="true"></i>
-        <h1>Weather App</h1>
+      <i class="fa fa-cloud" style="font-size: 80px" aria-hidden="true"></i>
+      <h1>Weather App</h1>
     </header>
     <div class="mainContainer">
-        <div id="form">
-            <input type="text" name="" placeholder="Enter a city" id="search">
-            <button>Get Weather Data</button>
+      <div id="form">
+        <div class="error-input">
+          <input type="text" name="" placeholder="Enter a city" id="search" />
+          <span class="error" aria-live="polite"></span>
         </div>
-        <section>
-            <div class="data-container">
-                <h2 id="location"></h2>
-                <p id="temp"></p>
-                <p id="feels"></p>
-                <p id="humidity"></p>
-                <p id="wind-speed"></p>
-            </div>
-        </section>
+        <button>Get Weather Data</button>
+      </div>
+      <section>
+        <div class="data-container">
+          <h2 id="location"></h2>
+          <p id="temp"></p>
+          <p id="feels"></p>
+          <p id="humidity"></p>
+          <p id="wind-speed"></p>
+        </div>
+      </section>
     </div>
     <script src="./scripts/main.js"></script>
-</body>
+  </body>
 </html>
