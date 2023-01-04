@@ -49,7 +49,6 @@ header{
 }
 
 #form{
-    /* margin-top: -200px; */
     gap: 10px;
 }
 
@@ -103,3 +102,15 @@ button:hover{
 #temp {
     font-size: 100px;
 }
+
+@media screen and (max-width: 480px) {
+    #form{
+        margin-top: -200px;
+    }
+    .input-div, #form{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+} 
