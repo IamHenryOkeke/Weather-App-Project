@@ -14,26 +14,29 @@
   <body>
     <header>
       <i class="fa fa-cloud" style="font-size: 80px" aria-hidden="true"></i>
-      <h1>Weather App</h1>
+      <h1>Weather Web App</h1>
     </header>
-    <div class="mainContainer">
-      <div id="form">
-        <div class="error-input">
+    <main class="mainContainer">
+      <form id="form">
+        <div class="input-div">
           <input type="text" name="" placeholder="Enter a city" id="search" />
-          <span class="error" aria-live="polite"></span>
+          <button>Get Weather Data</button>
         </div>
-        <button>Get Weather Data</button>
-      </div>
+        <span class="error" aria-live="polite"></span>
+      </form>
       <section>
         <div class="data-container">
           <h2 id="location"></h2>
           <p id="temp"></p>
+          <p id="cloud"></p>
+          <img id="cloud-icon" src="" alt="">
           <p id="feels"></p>
           <p id="humidity"></p>
           <p id="wind-speed"></p>
         </div>
+        <button id="tempToggle">&#176;C / &#176;F</button>
       </section>
-    </div>
+    </main>
     <script src="./scripts/main.js"></script>
   </body>
 </html>
