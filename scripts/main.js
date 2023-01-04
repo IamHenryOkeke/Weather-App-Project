@@ -11,25 +11,38 @@ async function getWeatherData() {
         const response = await fetch(apiURL, { mode: "cors" });
         const weatherData = await response.json();
         console.log(weatherData);
-        populate(weatherData);
+        console.log(getNeededData(weatherData));
+        populate(getNeededData(weatherData));
 
     } catch (err) {
         console.log("Error!!!!!!!!!!!!!!");
     }
 }
 
-const populate = (data) => {
+function getNeededData(data) {
+    let tempInCelsius = (data.main.temp - 273).toFixed(2)
+    let feelsLikeInCelsius = (data.main.feels_like - 273).toFixed(2)
+    return {
+        location: data.name,
+        temp: tempInCelsius,
+        feelsLike: feelsLikeInCelsius,
+        humidity: data.main.humidity,
+        windSpeed: data.wind.speed
+    };
+}
+
+const populate = (obj) => {
     let location = document.getElementById("location");
     let temperature = document.getElementById("temp");
     let feelsLike = document.getElementById("feels");
     let humidity = document.getElementById("humidity");
     let windSpeed = document.getElementById("wind-speed")
 
-    location.textContent = `${data.name}`;
-    temperature.textContent = `${data.main.temp}`;
-    feelsLike.textContent = `${data.main.feels_like}`;
-    humidity.textContent = `${data.main.humidity} %`;
-    windSpeed.textContent = `${data.weather[0].icon}`;
+    location.textContent = `${obj.location}`;
+    temperature.textContent = `${obj.temp}`;
+    feelsLike.textContent = `${obj.feelsLike}`;
+    humidity.textContent = `${obj.humidity} %`;
+    windSpeed.textContent = `${obj.windSpeed}`;
 }
 
 getWeatherData()
