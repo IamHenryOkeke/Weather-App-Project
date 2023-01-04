@@ -46,8 +46,8 @@ const toggleTempUnit = () => {
         tempVar.classList.add("fahrenheit");
         feelsVar.classList.remove("celsius");
         feelsVar.classList.add("fahrenheit");
-        const x = toFahrenheit(feelsVar.textContent);
-        const y = toFahrenheit(tempVar.textContent);
+        const x = (toFahrenheit(feelsVar.textContent)).toFixed(2);
+        const y = (toFahrenheit(tempVar.textContent)).toFixed(2);
         tempVar.textContent = y;
         feelsVar.textContent = x;
     } else {
@@ -55,8 +55,8 @@ const toggleTempUnit = () => {
         tempVar.classList.add("celsius");
         feelsVar.classList.remove("fahrenheit");
         feelsVar.classList.add("celsius");
-        const y = toCelsius(tempVar.textContent);
-        const x = toCelsius(feelsVar.textContent);
+        const y = (toCelsius(tempVar.textContent)).toFixed(2);
+        const x = (toCelsius(feelsVar.textContent)).toFixed(2);
         tempVar.textContent = y;
         feelsVar.textContent = x;
     }
