@@ -1,5 +1,7 @@
 const searchBtn = document.querySelector("button");
 const inputForm = document.querySelector("form");
+const toggleTemp = document.getElementById("tempToggle");
+
 
 async function getWeatherData() {
     let cityName = document.querySelector("input").value;
@@ -14,7 +16,6 @@ async function getWeatherData() {
         errorMessage.textContent = "";
         console.log(getNeededData(weatherData));
         populate(getNeededData(weatherData));
-
     } catch (err) {
         const response = await fetch(apiURL, { mode: "cors" });
         const weatherData = await response.json();
@@ -38,8 +39,28 @@ const getNeededData = (data) => {
 }
 
 const toggleTempUnit = () => {
-    var element = document.getElementById("myDIV");
-    element.classList.toggle("tempToggle");
+    var tempVar = document.getElementById("temp");
+    var feelsVar = document.getElementById("feels");
+    if (tempVar.classList.contains("celsius") && feelsVar.classList.contains("celsius")) {
+        tempVar.classList.remove("celsius");
+        tempVar.classList.add("fahrenheit");
+        feelsVar.classList.remove("celsius");
+        feelsVar.classList.add("fahrenheit");
+        const x = toFahrenheit(feelsVar.textContent);
+        const y = toFahrenheit(tempVar.textContent);
+        tempVar.textContent = y;
+        feelsVar.textContent = x;
+    } else {
+        tempVar.classList.remove("fahrenheit");
+        tempVar.classList.add("celsius");
+        feelsVar.classList.remove("fahrenheit");
+        feelsVar.classList.add("celsius");
+        const y = toCelsius(tempVar.textContent);
+        const x = toCelsius(feelsVar.textContent);
+        tempVar.textContent = y;
+        feelsVar.textContent = x;
+    }
+
 }
 
 const populate = (obj) => {
@@ -51,13 +72,13 @@ const populate = (obj) => {
     let cloud = document.getElementById("cloud");
     let cloudIcon = document.getElementById("cloud-icon")
 
-    location.innerHTML = `${obj.location}`;
-    cloud.innerHTML = `Cloud: ${obj.cloud}`;
+    location.textContent = `${obj.location}`;
+    cloud.textContent = `Cloud: ${obj.cloud}`;
     cloudIcon.src = obj.cloudImg;
-    temperature.innerHTML = `${obj.temp}&#176;C`;
-    feelsLike.innerHTML = `It feels likes ${obj.feelsLike}&#176;C`;
-    humidity.innerHTML = `Humidity: ${obj.humidity}%`;
-    windSpeed.innerHTML = `Wind Speed: ${obj.windSpeed} m/s`;
+    temperature.textContent = `${obj.temp}`;
+    feelsLike.textContent = obj.feelsLike;
+    humidity.textContent = `Humidity: ${obj.humidity}%`;
+    windSpeed.textContent = `Wind Speed: ${obj.windSpeed} m/s`;
 }
 
 const toCelsius = (fahrenheit) => {
@@ -75,3 +96,5 @@ inputForm.addEventListener("submit", (e) => {
 getWeatherData()
 
 searchBtn.addEventListener("click", getWeatherData);
+
+toggleTemp.addEventListener("click", toggleTempUnit)
