@@ -42,6 +42,7 @@ header{
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
@@ -51,6 +52,11 @@ header{
     display: flex;
     gap: 10px;
     align-items: center;
+}
+
+.error-input{
+    display: flex;
+    flex-direction: column;
 }
 
 input{
