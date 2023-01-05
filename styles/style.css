@@ -116,9 +116,6 @@ button:hover{
 }
 
 @media screen and (max-width: 480px) {
-    #form{
-        margin-top: -200px;
-    }
     .input-div, #form{
         display: flex;
         flex-direction: column;
