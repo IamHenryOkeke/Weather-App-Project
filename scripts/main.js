@@ -14,6 +14,7 @@ async function getWeatherData() {
         const response = await fetch(apiURL, { mode: "cors" });
         const weatherData = await response.json();
         errorMessage.textContent = "";
+        console.log(weatherData)
         console.log(getNeededData(weatherData));
         populate(getNeededData(weatherData));
     } catch (err) {
@@ -36,31 +37,6 @@ const getNeededData = (data) => {
         humidity: data.main.humidity,
         windSpeed: data.wind.speed
     };
-}
-
-const toggleTempUnit = () => {
-    var tempVar = document.getElementById("temp");
-    var feelsVar = document.getElementById("feels");
-    if (tempVar.classList.contains("celsius") && feelsVar.classList.contains("celsius")) {
-        tempVar.classList.remove("celsius");
-        tempVar.classList.add("fahrenheit");
-        feelsVar.classList.remove("celsius");
-        feelsVar.classList.add("fahrenheit");
-        const x = (toFahrenheit(feelsVar.textContent)).toFixed(2);
-        const y = (toFahrenheit(tempVar.textContent)).toFixed(2);
-        tempVar.textContent = y;
-        feelsVar.textContent = x;
-    } else {
-        tempVar.classList.remove("fahrenheit");
-        tempVar.classList.add("celsius");
-        feelsVar.classList.remove("fahrenheit");
-        feelsVar.classList.add("celsius");
-        const y = (toCelsius(tempVar.textContent)).toFixed(2);
-        const x = (toCelsius(feelsVar.textContent)).toFixed(2);
-        tempVar.textContent = y;
-        feelsVar.textContent = x;
-    }
-
 }
 
 const populate = (obj) => {
@@ -89,12 +65,50 @@ const toFahrenheit = (celsius) => {
     return ((9 / 5) * celsius) + 32;
 }
 
+const resetClass = () => {
+    var tempVar = document.getElementById("temp");
+    var feelsVar = document.getElementById("feels");
+    if (tempVar.classList.contains("fahrenheit") && feelsVar.classList.contains("fahrenheit")) {
+        tempVar.classList.replace("fahrenheit", "celsius");
+        feelsVar.classList.replace("fahrenheit", "celsius");
+    }
+
+}
+
 inputForm.addEventListener("submit", (e) => {
     e.preventDefault();
 });
 
 getWeatherData()
 
-searchBtn.addEventListener("click", getWeatherData);
+searchBtn.addEventListener("click", () => {
+    getWeatherData;
+    resetClass;
+});
+
+const toggleTempUnit = () => {
+    var tempVar = document.getElementById("temp");
+    var feelsVar = document.getElementById("feels");
+    if (tempVar.classList.contains("celsius") && feelsVar.classList.contains("celsius")) {
+        tempVar.classList.remove("celsius");
+        tempVar.classList.add("fahrenheit");
+        feelsVar.classList.remove("celsius");
+        feelsVar.classList.add("fahrenheit");
+        const x = (toFahrenheit(feelsVar.textContent)).toFixed(2);
+        const y = (toFahrenheit(tempVar.textContent)).toFixed(2);
+        tempVar.textContent = y;
+        feelsVar.textContent = x;
+    } else {
+        tempVar.classList.remove("fahrenheit");
+        tempVar.classList.add("celsius");
+        feelsVar.classList.remove("fahrenheit");
+        feelsVar.classList.add("celsius");
+        const y = (toCelsius(tempVar.textContent)).toFixed(2);
+        const x = (toCelsius(feelsVar.textContent)).toFixed(2);
+        tempVar.textContent = y;
+        feelsVar.textContent = x;
+    }
+
+}
 
 toggleTemp.addEventListener("click", toggleTempUnit)
