@@ -82,8 +82,8 @@ inputForm.addEventListener("submit", (e) => {
 getWeatherData()
 
 searchBtn.addEventListener("click", () => {
-    getWeatherData;
-    resetClass;
+    getWeatherData();
+    resetClass();
 });
 
 const toggleTempUnit = () => {
