@@ -100,7 +100,7 @@ button:hover{
 }
 
 #temp {
-    font-size: 100px;
+    font-size: 80px;
 }
 
 .celsius::after{
@@ -125,5 +125,11 @@ button:hover{
     }
     .error{
         text-align: center;
+    }
+    section{
+        width: 100vw;
+    }
+    .data-container{
+        width: 75%;
     }
 } 
