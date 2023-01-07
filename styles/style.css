@@ -116,7 +116,7 @@ button:hover{
     content: "It feels like: ";
 }
 
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 380px) {
     .input-div, #form{
         display: flex;
         flex-direction: column;
@@ -129,9 +129,12 @@ button:hover{
     }
     section{
         width: 100vw;
+        padding: 50px;
     }
     .data-container{
-        width: 75%;
+        width: 70%;
+        padding-left: 10px;
+        padding-right: 10px;
     }
 
     form{
